@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Exam">
+	<resultMap id="result" class="org.wyjc.entity.Exam">
+		<result property="id" column="id"></result>
+		<result property="title" column="title"></result>
+		<result property="model" column="model"></result>
+		<result property="totalScore" column="totalScore"></result>
+		<result property="passScore" column="passScore"></result>
+		<result property="categoryId" column="categoryId"></result>
+
+		<result property="description" column="description"></result>
+		<result property="answerTime" column="answerTime"></result>
+
+	</resultMap>
+	<select id="findAllExam" resultClass="org.wyjc.entity.Exam">
+		select * from exam
+	</select>
+	<select id="findAllExamByPager" resultClass="org.wyjc.entity.Exam"
+		parameterClass="org.wyjc.util.Pager">
+		select * from exam where 1=1
+
+		<dynamic prepend="">
+			<isNotNull property="keyword" prepend="and">
+				title  like '%$keyword$%'
+</isNotNull>
+		</dynamic> order by #orderBy# limit #currentPage#,#numPerPage#
+	</select>
+	<select id="getExamById" parameterClass="int" resultClass="org.wyjc.entity.Exam">
+		select * from exam where id=#value#
+	</select>
+	<insert id="insertExam" parameterClass="org.wyjc.entity.Exam">
+		insert into exam(title,
+		model,totalScore,passScore,answerTime,categoryId,description) VALUES
+		(#title#,
+		#model#,#totalScore#,#passScore#,#answerTime#,#categoryId#,#description#)
+	</insert>
+	<delete id="deleteExam" parameterClass="org.wyjc.entity.Exam">
+		delete from exam where
+		id=#id#
+	</delete>
+</sqlMap>

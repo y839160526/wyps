@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="customer">
+	<resultMap id="result" class="org.wyjc.entity.CustomerDTO">
+		<result property="id" column="id"></result>
+		<result property="name" column="name"></result>
+		<result property="phone" column="phone"></result>
+		<result property="remark" column="remark"></result>
+	</resultMap>
+	<select id="findAllCustomer" resultClass="org.wyjc.entity.CustomerDTO">
+		select * from customer
+	</select>
+	<select id="findAllCustomerByPager" resultClass="org.wyjc.entity.CustomerDTO"
+		parameterClass="org.wyjc.util.Pager">
+		select * from customer where 1=1
+		<dynamic prepend="">
+			<isEqual property="status" prepend="and" compareValue="name">
+				name like '%$keyword$%'
+</isEqual>
+			<isEqual property="status" prepend="and" compareValue="phone">
+				phone like '%$keyword$%'
+</isEqual>
+		</dynamic>
+		order by #orderBy# limit #currentPage#,#numPerPage#
+	</select>
+	<select id="getCustomerById" parameterClass="java.lang.String"
+		resultClass="org.wyjc.entity.CustomerDTO">
+		select * from customer where id=#value#
+	</select>
+	<insert id="insertCustomer" parameterClass="org.wyjc.entity.CustomerDTO">
+		insert into
+		customer(name,phone,remark,createdDate,updatedDate)values(#name#,#phone#,#remark#,now(),now())
+	</insert>
+	<delete id="deleteCustomer" parameterClass="org.wyjc.entity.CustomerDTO">
+		delete from customer where id=#id#
+	</delete>
+	<update id="updateCustomerById" parameterClass="org.wyjc.entity.CustomerDTO">
+		update customer set name=#name#
+		,phone=#phone#,remark=#remark#,updatedDate=now() where id=#id#
+	</update>
+</sqlMap>

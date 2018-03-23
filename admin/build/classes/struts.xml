@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="ture" />
+	<constant name="struts.action.extension" value="htm" />
+	<package name="default" namespace="/" extends="struts-default">
+		<global-results>
+			<result name="login">login.jsp</result>
+			<result name="json">json.jsp</result>
+		</global-results>
+		<action name="customerAction" class="org.wyjc.action.CustomerAction">
+			<result name="createCustomer">editeCustomer.jsp</result>
+			<result name="listCustomer">customerList.jsp</result>
+			<result name="editCustomer">editeCustomer.jsp</result>
+			<result name="exportExcel">exportCustomerExcel.jsp</result>
+		</action>
+		<action name="userAction" class="org.wyjc.action.UserAction">
+			<result name="success">index.jsp</result>
+			<result name="index">index.jsp</result>
+		</action>
+		<action name="housesInfoAction" class="org.wyjc.action.HousesInfoAction">
+			<result name="erShouHousesInfoList">erShouHousesInfoList.jsp</result>
+			<result name="createHouseInfo">editErShouHousesInfo.jsp</result>
+		</action>
+		<action name="areaAction" class="org.wyjc.action.AreaAction">
+
+		</action>
+		<action name="getHtmlList" class="org.wyjc.action.GapAction"
+			method="getHtmlList">
+
+		</action>
+		<action name="getContentList" class="org.wyjc.action.GapAction"
+			method="getContentList">
+
+		</action>
+		<action name="analysiscontent" class="org.wyjc.action.GapAction"
+			method="analysiscontent">
+
+		</action>
+		<action name="saveConf" class="org.wyjc.action.GapAction"
+			method="saveConf">
+
+		</action>
+		<action name="getConfbyId" class="org.wyjc.action.GapAction"
+			method="getConfbyId">
+
+		</action>
+		
+		<action name="savePageConfData" class="org.wyjc.action.GapAction"
+			method="savePageConfData">
+		</action>
+		<action name="parseUrlsFromContent" class="org.wyjc.action.GapAction"
+			method="parseUrlsFromContent">
+		</action>
+		<action name="parseFieldsFromContent" class="org.wyjc.action.GapAction"
+			method="parseFieldsFromContent">
+		</action>
+		<action name="updateConf" class="org.wyjc.action.PageConfAction"
+			method="updateConf"></action>
+		<action name="pageConf" class="org.wyjc.action.PageConfAction"
+			method="pageConf">
+			<result name="pageConf">pageConf.jsp</result>
+			<result name="login">login.jsp</result>
+		</action>
+		<action name="index" class="org.wyjc.action.PageConfAction"
+			method="index">
+			<result name="index">index.jsp</result>
+		</action>
+		<action name="pageData" class="org.wyjc.action.PageConfAction"
+			method="pageData">
+		</action>
+		<action name="dataManage" class="org.wyjc.action.PageConfAction"
+			method="dataManage">
+			<result name="dataManage">dataManage.jsp</result>
+		</action>
+		<action name="pageConfData" class="org.wyjc.action.PageConfAction"
+			method="pageConfData">
+		</action>
+		<action name="exportExcel" class="org.wyjc.action.PageConfAction"
+			method="exportExcel">
+		</action>
+		<action name="navGrid" class="org.wyjc.action.PageConfAction"
+			method="navGrid">
+		</action>
+		<action name="logout" class="org.wyjc.action.UserAction" method="logout">
+			<result name="login">login.jsp</result>
+		</action>
+		<action name="uploadDocsFile" class="org.wyjc.action.DocsToPdfAction" method="uploadDocsFile">
+			<result name="success">uploadDocsFile.jsp</result>
+		</action>
+		<action name="uploadDocsFileToPdf" class="org.wyjc.action.DocsToPdfAction" method="uploadDocsFileToPdf">
+		</action>
+		<action name="commendList" class="org.wyjc.action.StockAction" method="commendList">
+		</action>
+	</package>
+
+</struts>

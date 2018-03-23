@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-autowire="byName">
+	<context:annotation-config />
+	<context:component-scan base-package="org.wyjc" />
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/hams?characterEncoding=UTF-8&amp;autoReconnect=true">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+		<!-- 同一时间可以从池分配的最多连接数量。设置为0时表示无限制。  -->    
+        <property name="maxActive" value="20" />  
+        <!-- 超时等待时间以毫秒为单位  -->    
+        <property name="maxWait" value="500" />  
+        <!-- 池里不会被释放的最多空闲连接数量。设置为0时表示无限制。  -->    
+        <property name="maxIdle" value="3" />  
+        <property name="defaultAutoCommit" value="true" />  
+        <!-- 设置自动回收超时连接 -->   
+        <property name="removeAbandoned" value="true" />  
+        <!-- 自动回收超时时间(以秒数为单位) -->    
+        <property name="removeAbandonedTimeout" value="60" />  
+	</bean>
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="configLocation">
+			<value>classpath:/sql-map-config.xml</value>
+		</property>
+	</bean>
+	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+	</bean>
+	<bean class="org.wyjc.dao.impl.AttributeDaoImpl" id="attributeDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	<bean class="org.wyjc.dao.impl.BuildingInfoDaoImpl" id="buildingInfoDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	<bean class="org.wyjc.dao.impl.HousesDaoImpl" id="housesDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	<bean class="org.wyjc.dao.impl.HousesInfoDaoImpl" id="housesInfoDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	<bean class="org.wyjc.dao.impl.CustomerDaoImpl" id="customerDao">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	<bean class="org.wyjc.dao.impl.UserDaoImpl" id="userDaoImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	<bean class="org.wyjc.dao.impl.AreaDaoImpl" id="areaDaoImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	<bean class="org.wyjc.dao.impl.PageConfDaoImpl" id="PageConfDaoImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	<bean class="org.wyjc.dao.impl.PageConfDataDaoImpl" id="PageConfDataDaoImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+</beans>

@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//WebContent/dataManage.jsp=UTF-8
+encoding//src/org/wyjc/action/CustomerAction.java=UTF-8
+encoding//src/org/wyjc/action/DocsToPdfAction.java=UTF-8
+encoding//src/org/wyjc/action/GapAction.java=UTF-8
+encoding//src/org/wyjc/action/HousesInfoAction.java=UTF-8
+encoding//src/org/wyjc/action/PageConfAction.java=gbk
+encoding//src/org/wyjc/action/UserAction.java=UTF-8
+encoding//src/org/wyjc/filter/LoginFilter.java=UTF-8
+encoding/src=gbk
