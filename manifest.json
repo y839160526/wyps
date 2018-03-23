@@ -1,0 +1,24 @@
+{
+  "name": "网页小强",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "小强网页采集器",
+  "icons": { "16": "icon16.png" },
+  "browser_action": {
+    "default_icon": "icon16.png"
+  },
+  "background" : {
+    "persistent": true,
+    "scripts": ["jquery.js","bg.js"]
+  },
+   
+  "content_scripts":[{
+    "matches":["*://*/*"],
+    "css":["style.css","jquery-ui.css"],
+    "js":["jquery.js","jquery-ui.js","jquery.blockUI.js","content_scripts.js"]
+  }],
+  "web_accessible_resources": ["images/ui-icons_777777_256x240.png","images/ui-icons_444444_256x240.png","images/ui-icons_555555_256x240.png","/images/ui-icons_ffffff_256x240.png"],
+  "permissions": [
+  	"tabs","http://*/*", "https://*/*","webNavigation","contextMenus","storage"
+  ]
+}
