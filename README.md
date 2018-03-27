@@ -6,3 +6,4 @@
 缺点：采集速度慢<br/>
 优点：不容易被服务器屏蔽，模拟人工操作<br/>
 有问题联系作者：陈英 微信号：chenying9023 邮箱：839160526@163.com<br/>
+<img src="https://assets0.vc.cn/assets.vc.cn/system/photos/avatars/000/130/763/iPhone6p/d061d556a5efa14172c3863b101ad18f.png?1507623077" alt="">
