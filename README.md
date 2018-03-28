@@ -6,6 +6,7 @@
 缺点：采集速度慢<br/>
 优点：不容易被服务器屏蔽，模拟人工操作<br/>
 有问题联系作者：陈英 微信号：chenying9023 邮箱：839160526@163.com<br/> 网站:<a href="http://www.wangye.io">www.wangye.io</a><br/>
+用户名:user 密码:user <br/>
 操作方法：<br/>
 1、在你要采集的列表页面点击插件图标<br/>
 <img width='200px' src="https://assets1.vc.cn/assets.vc.cn/system/photos/avatars/000/140/357/iPhone6p/9f9ae88d4ade7607b8e870b4bdb50a96.png?1522141478" alt=""><br/>
